@@ -36,6 +36,8 @@ public @interface Consumer {
     String[] topics();
     String groupId();
     String offset() default "latest";
+    int sessionTimeout() default 10000;
+    String clientId() default "";
     Class<?> keyType() default String.class;
     Class<? extends ConsumerRebalanceListener> consumerRebalanceListener() default DefaultConsumerRebalanceListener.class;
 }
