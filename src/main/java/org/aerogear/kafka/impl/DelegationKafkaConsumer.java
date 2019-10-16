@@ -46,6 +46,8 @@ import static org.apache.kafka.clients.consumer.ConsumerConfig.GROUP_ID_CONFIG;
 import static org.apache.kafka.clients.consumer.ConsumerConfig.AUTO_OFFSET_RESET_CONFIG;
 import static org.apache.kafka.clients.consumer.ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG;
 import static org.apache.kafka.clients.consumer.ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG;
+import static org.apache.kafka.clients.consumer.ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG;
+import static org.apache.kafka.clients.consumer.ConsumerConfig.CLIENT_ID_CONFIG;
 
 public class DelegationKafkaConsumer implements Runnable {
 
@@ -122,6 +124,8 @@ public class DelegationKafkaConsumer implements Runnable {
         properties.put(BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         properties.put(GROUP_ID_CONFIG, groupId);
         properties.put(AUTO_OFFSET_RESET_CONFIG, consumerAnnotation.offset());
+        properties.put(SESSION_TIMEOUT_MS_CONFIG, consumerAnnotation.sessionTimeout());
+        properties.put(CLIENT_ID_CONFIG, consumerAnnotation.clientId());
         properties.put(KEY_DESERIALIZER_CLASS_CONFIG,  CafdiSerdes.serdeFrom(keyTypeClass).deserializer().getClass());
         properties.put(VALUE_DESERIALIZER_CLASS_CONFIG,CafdiSerdes.serdeFrom(valTypeClass).deserializer().getClass());
 
