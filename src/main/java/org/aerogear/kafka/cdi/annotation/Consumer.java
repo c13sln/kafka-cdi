@@ -38,6 +38,10 @@ public @interface Consumer {
     String offset() default "latest";
     int sessionTimeout() default 10000;
     String clientId() default "";
+    int maxPollIntervallMs() default 300000;
+    // Must always be larger than maxPollIntervallMs
+    int requestTimeoutMs() default 301000;
     Class<?> keyType() default String.class;
+
     Class<? extends ConsumerRebalanceListener> consumerRebalanceListener() default DefaultConsumerRebalanceListener.class;
 }

@@ -25,18 +25,18 @@
 
   <groupId>org.aerogear.kafka</groupId>
   <artifactId>kafka-cdi-extension</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.3-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>kafka-cdi</name>
   <description>simple CDI extension for Apache Kafka</description>
-
+<!--
   <scm>
     <connection>scm:git:git://github.com/aerogear/kafka-cdi.git</connection>
     <developerConnection>scm:git:git@github.com:aerogear/kafka-cdi.git</developerConnection>
     <url>https://github.com/aerogear/kafka-cdi</url>
     <tag>HEAD</tag>
   </scm>
-
+-->
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>

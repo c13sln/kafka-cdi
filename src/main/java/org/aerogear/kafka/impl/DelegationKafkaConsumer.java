@@ -47,6 +47,8 @@ import static org.apache.kafka.clients.consumer.ConsumerConfig.AUTO_OFFSET_RESET
 import static org.apache.kafka.clients.consumer.ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG;
 import static org.apache.kafka.clients.consumer.ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG;
 import static org.apache.kafka.clients.consumer.ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG;
+import static org.apache.kafka.clients.consumer.ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG;
+import static org.apache.kafka.clients.consumer.ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG;
 import static org.apache.kafka.clients.consumer.ConsumerConfig.CLIENT_ID_CONFIG;
 
 public class DelegationKafkaConsumer implements Runnable {
@@ -126,6 +128,8 @@ public class DelegationKafkaConsumer implements Runnable {
         properties.put(AUTO_OFFSET_RESET_CONFIG, consumerAnnotation.offset());
         properties.put(SESSION_TIMEOUT_MS_CONFIG, consumerAnnotation.sessionTimeout());
         properties.put(CLIENT_ID_CONFIG, consumerAnnotation.clientId());
+        properties.put(MAX_POLL_INTERVAL_MS_CONFIG, consumerAnnotation.maxPollIntervallMs());
+        properties.put(REQUEST_TIMEOUT_MS_CONFIG, consumerAnnotation.requestTimeoutMs());
         properties.put(KEY_DESERIALIZER_CLASS_CONFIG,  CafdiSerdes.serdeFrom(keyTypeClass).deserializer().getClass());
         properties.put(VALUE_DESERIALIZER_CLASS_CONFIG,CafdiSerdes.serdeFrom(valTypeClass).deserializer().getClass());
 
